@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"
+  integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="
+  crossorigin="anonymous"></script>
+
+<!-- <script src="https://raw.github.com/LeaVerou/prefixfree/gh-pages/prefixfree.min.js"></script> -->
+
+
+<!-- //Draggable -->
+<script>
+var draggingBox = false;
+var draggingBoxYOffset = 0;
+
+
+$(document).ready(function() {
+//FitToContent('school_name');
+$('.draggable').mousedown(function(e) {
+  draggingBox = true;
+  draggingBoxYOffset = e.pageY - $('.draggable').offset().top;
+});
+
+$(document).mousemove(function(e) {
+  if (draggingBox) {
+    var newY = e.pageY - draggingBoxYOffset;
+    // console.log(newY);
+    $('.draggable').css('bottom', 'inherit');
+    $('.draggable').offset({
+      top: newY,
+      left: $('.draggable').offset().left
+    });
+  }
+});
+
+$(document).mouseup(function() {
+  draggingBox = false;
+});
+});
+</script>
+
+
+
+
+
+<!-- CSS -->
+<style>
+
+/*overlayView*/
+* {
+box-sizing: border-box;
+}
+
+html {
+box-sizing: border-box;
+}
+
+*, *:before, *:after {
+box-sizing: inherit;
+}
+
+body {
+background-color:transparent;
+}
+
+.box {
+color: white;
+position: absolute;
+width: 1080px;
+top: 54px;
+
+}
+
+.box2 {
+color: white;
+position: absolute;
+width: 1080px;
+top: 1700px;
+
+}
+
+
+.container {
+background-color:transparent;
+overflow-y: hidden;
+overflow-x: hidden;
+width: 1080px;
+height: 1920px;
+position: relative;
+
+}
+
+/*.checkered {
+background-image:
+linear-gradient(45deg, #555 25%, transparent 25%, transparent),
+linear-gradient(-45deg, #555 25%, transparent 25%, transparent),
+linear-gradient(45deg, transparent 75%, #555 75%),
+linear-gradient(-45deg, transparent 75%, #555 75%);
+background-size: 20px 20px;
+}*/
+
+
+
+
+[contenteditable="true"]{
+outline: none;
+}
+
+/*CSS Classes*/
+
+#closedcaption
+{
+font-family : Helvetica;
+font-weight: bold;
+font-size : 47px;
+color : white;
+/*color : rgb(255, 255, 255);*/
+src: url("https:/spectre.sc-corp.net/overlay_assets/font/Gotham-Medium.otf") format("opentype");
+/*position: right;*/
+/*align-self: center;*/
+/*bottom: 50px;*/
+text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+text-align: center;
+top: 300px;
+line-height: 1.2;
+}
+
+
+
+
+
+</style>
+
+
+
+</head>
+
+<title>Speech Caption</title>
+
+<body style="padding:0 0 0 0;margin:0;">
+<div class="container">
+<div class="box">
+
+
+<!-- <img class"container" src="https:/spectre.sc-corp.net/overlay_assets/image/10_31_NFL_Bears_CharacterStats_Bottom.png"/> -->
+
+<div >
+
+
+    <div id="closedcaption" contenteditable="true" >Type speech caption here. Delete text below.</div>
+
+</div>
+
+<!-- draggable box -->
+</div>
+<div class="box2">
+  <div id="closedcaption" contenteditable="true" > Type speech caption here. Delete text above.</div>
+
+
+</div>
+
+
+</div> <!-- container -->
+</body>
+</html>
